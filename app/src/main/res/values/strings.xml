@@ -2,4 +2,5 @@
     <string name="app_name">TicTacToe</string>
     <string name="TIC_X">X</string>
     <string name="TIC_O">O</string>
+    <string name="start">Start</string>
 </resources>
