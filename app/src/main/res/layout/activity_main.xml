@@ -44,6 +44,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="monospace"
+                android:textColor="@color/white"
                 android:textSize="70sp"
                 android:textStyle="bold"
                 android:typeface="monospace"
@@ -56,6 +57,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="monospace"
+                android:textColor="@color/white"
                 android:textSize="70sp"
                 android:typeface="monospace"
                 app:backgroundTint="#528EFE" />
@@ -67,6 +69,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="monospace"
+                android:textColor="@color/white"
                 android:textSize="70sp"
                 android:typeface="monospace"
                 app:backgroundTint="#528EFE" />
@@ -89,6 +92,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="monospace"
+                android:textColor="@color/white"
                 android:textSize="70sp"
                 android:typeface="monospace"
                 app:backgroundTint="#528EFE" />
@@ -100,6 +104,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="monospace"
+                android:textColor="@color/white"
                 android:textSize="70sp"
                 android:typeface="monospace"
                 app:backgroundTint="#528EFE" />
@@ -111,6 +116,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="monospace"
+                android:textColor="@color/white"
                 android:textSize="70sp"
                 android:typeface="monospace"
                 app:backgroundTint="#528EFE" />
@@ -133,6 +139,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="monospace"
+                android:textColor="@color/white"
                 android:textSize="70sp"
                 android:typeface="monospace"
                 app:backgroundTint="#528EFE" />
@@ -144,6 +151,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="monospace"
+                android:textColor="@color/white"
                 android:textSize="70sp"
                 android:typeface="monospace"
                 app:backgroundTint="#528EFE" />
@@ -155,6 +163,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="monospace"
+                android:textColor="@color/white"
                 android:textSize="70sp"
                 android:typeface="monospace"
                 app:backgroundTint="#528EFE" />
