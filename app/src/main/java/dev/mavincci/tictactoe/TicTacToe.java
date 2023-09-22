@@ -2,16 +2,13 @@ package dev.mavincci.tictactoe;
 
 public class TicTacToe {
 
-    public static final char[] turns = new char[]{'O', 'X', '\0'};
+    public static final char[] turns = new char[]{'X', 'O', '\0'};
 
     private final char[] state = new char[9];
     private int turn = 0;
 
     TicTacToe() {
         reset();
-        state[0] = 'O';
-        state[3] = 'O';
-        state[4] = 'O';
     }
 
     void reset() {
@@ -20,8 +17,20 @@ public class TicTacToe {
             c = turns[2];
     }
 
+    public void input(int i) {
+        state[i-1] = turns[turn];
+    }
+
+    public void toggleTurn() {
+        turn ^= 1;
+    }
+
     public char[] getState() {
         return state;
+    }
+
+    public char getTurn() {
+        return turns[turn];
     }
 
     void print() {

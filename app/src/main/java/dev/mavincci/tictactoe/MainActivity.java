@@ -1,21 +1,45 @@
 package dev.mavincci.tictactoe;
 
-import androidx.annotation.LayoutRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView infoLabel;
     Button[] buttons;
     Button actionButton;
     Integer[] ids;
 
     TicTacToe game;
 
-    void init() {
+    boolean hasStarted = false;
+
+    void gameStart() {
         game = new TicTacToe();
+        hasStarted = true;
+        updateState();
+
+        actionButton.setBackgroundColor(Color.parseColor("#FF0000"));
+        actionButton.setText("Stop");
+    }
+
+    void gameEnd() {
+        hasStarted = false;
+        game.reset();
+        updateState();
+
+        infoLabel.setText("Click \"Start\"");
+        actionButton.setBackgroundColor(Color.parseColor("#24AC37"));
+        actionButton.setText("Start");
+
+        for (int i = 0; i < ids.length; ++i)
+            buttons[i].setEnabled(false);
     }
 
     void initialize() {
@@ -32,12 +56,18 @@ public class MainActivity extends AppCompatActivity {
                 R.id.btn9
         };
 
+        infoLabel = findViewById(R.id.info_label);
+        infoLabel.setText("Click \"Start\"");
+
         actionButton = findViewById(R.id.action_button);
+        actionButton.setOnClickListener(new ActionButtonHandler());
 
         buttons = new Button[9];
 
         for (int i = 0; i < ids.length; ++i) {
             buttons[i] = findViewById(ids[i]);
+            buttons[i].setEnabled(false);
+            buttons[i].setOnClickListener(new BoardButtonHandler());
         }
 
         game = new TicTacToe();
@@ -47,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
         char[] state = game.getState();
 
         for (int i = 0; i < buttons.length; ++i) {
-            boolean isO = state[i] == TicTacToe.turns[0];
-            boolean isX = state[i] == TicTacToe.turns[1];
+            boolean isX = state[i] == TicTacToe.turns[0];
+            boolean isO = state[i] == TicTacToe.turns[1];
 
             if (isO || isX) {
                 buttons[i].setEnabled(false);
@@ -58,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 buttons[i].setText("");
             }
         }
+
+        infoLabel.setText("" + game.getTurn() + "'s Turn");
     }
 
     @Override
@@ -67,6 +99,31 @@ public class MainActivity extends AppCompatActivity {
 
         initialize();
 
-        updateState();
+//        updateState();
+    }
+
+    class BoardButtonHandler implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            for (int i = 0; i < buttons.length; ++i) {
+                if (v.getId() == ids[i]) {
+                    Log.d("BoardButtonHandler", "onClick: " + (i + 1));
+                    game.input(i + 1);
+                    game.toggleTurn();
+                    updateState();
+                    return;
+                }
+            }
+        }
+    }
+
+    class ActionButtonHandler implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (hasStarted)
+                gameEnd();
+            else
+                gameStart();
+        }
     }
 }
